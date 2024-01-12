@@ -1,7 +1,9 @@
-import { Container } from "./styles"
+import { Container, CheckTask} from "./styles"
 
 export function Task(){
     return(
-        <Container/>   
+        <Container>
+            <CheckTask/>
+        </Container>   
     );
 }
