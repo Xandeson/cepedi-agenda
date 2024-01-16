@@ -9,7 +9,3 @@ export const Container = styled.SafeAreaView`
     align-items: center;
     background-color: ${colors.secundary};
 `;
-
-export const Viewbott = styled.View`
-    
-`;

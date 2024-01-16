@@ -1,9 +1,19 @@
 import styled from "styled-components/native";
+import { colors } from "../../styles/variaveis";
 
 export const Conteiner = styled.View`
     aling-items: center;
     position: absolute;
     top: 280px;
     left: 140px;
-    background-color: '#fff';
+`;
+export const Bott = styled.TouchableOpacity`
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px white;
+    border-radius: 50px;
+    right: 20%;
+    background-color: ${colors.primary};
 `;

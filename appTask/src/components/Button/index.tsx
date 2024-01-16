@@ -1,14 +1,15 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import {AntDesign } from '@expo/vector-icons';
-import { Conteiner } from "./styles";
+import { Conteiner, Bott } from "./styles";
+
 export function Button() {
     return(
         <Conteiner>
-            <TouchableOpacity>
+            <Bott>
                 <View>
-                    <AntDesign name="plus" size={30} color="#daa520" />
+                    <AntDesign name="plus" size={30} color="#003269" />
                 </View>
-            </TouchableOpacity>
+            </Bott>
         </Conteiner>
     );
 }
