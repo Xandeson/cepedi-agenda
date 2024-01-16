@@ -1,10 +1,10 @@
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import { colors } from "../../styles/variaveis";
 
 export const Container = styled.View`
     width: 85%;
-    height: 50px;
+    height: 60px;
     background-color: ${colors.primary};
     justify-content: center;
     align-items: start;
@@ -19,4 +19,5 @@ export const CheckTask = styled.TouchableOpacity`
     border: solid 1px white;
     border-radius: 50px;
     margin-left: 3%;
+    flex: 2;
 `
