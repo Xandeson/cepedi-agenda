@@ -8,4 +8,8 @@ export const Container = styled.SafeAreaView`
     justify-content: center;
     align-items: center;
     background-color: ${colors.secundary};
-`
+`;
+
+export const Viewbott = styled.View`
+    
+`;
