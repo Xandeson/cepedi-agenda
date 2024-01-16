@@ -10,6 +10,7 @@ export function Home(){
     return(
         <Container>
         <Task/>
+        
         <StatusBar style="auto" />
         <View>
             <Button/>
