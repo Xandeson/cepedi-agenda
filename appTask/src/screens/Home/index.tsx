@@ -3,6 +3,7 @@ import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Task } from "../../components/Task";
 import { Button } from "../../components/Button";
+import { SearchBar } from "../../components/SearchBar";
 import { Container } from "./style";
 
 export interface TaskProps {
@@ -41,10 +42,12 @@ const TASKS = [
 ];
 
 export function Home() {
+  const [task, setTask] = useState()
+
   return (
     <Container>
+      <SearchBar/>
       <Task title="Task 1" id={1} done={true} favorited={false} />
-      <Task title="Task 2" id={1} done={true} favorited={false} />
 
       <StatusBar style="auto" />
       <View>
