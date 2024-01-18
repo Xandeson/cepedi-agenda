@@ -17,21 +17,25 @@ const TASKS = [
   {
     id: 1,
     title: "Desenvolver o APP",
+    favorited: true,
     done: false,
   },
   {
     id: 2,
     title: "Lavar a louça",
+    favorited: false,
     done: false,
   },
   {
     id: 3,
     title: "Formatar o computador",
+    favorited: false,
     done: false,
   },
   {
     id: 4,
     title: "Estudar Styled Components",
+    favorited: true,
     done: true,
   },
 ];
