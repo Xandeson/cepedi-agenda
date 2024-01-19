@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, Button } from "react-native";
 import { Task } from "../../components/Task";
-import { Button } from "../../components/Button";
+// import { Button } from "../../components/Button";
 import { SearchBar } from "../../components/SearchBar";
 import { Container } from "./style";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from 'react';
 
 export interface TaskProps {
   id: number;
@@ -41,7 +44,7 @@ const TASKS = [
   },
 ];
 
-export function Home() {
+export function Home({navigation}: {navigation: any}) {
   const [task, setTask] = useState(TASKS)
 
   return (
@@ -70,10 +73,10 @@ export function Home() {
           </>
         }
       />
-      
       <View>
-        <Button />
       </View>
+      
+      <Button title="Adicionar Tarefa" onPress={() => navigation.navigate('AddTask')} />
     </Container>
   );
 }
