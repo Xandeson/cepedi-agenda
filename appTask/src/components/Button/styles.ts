@@ -12,7 +12,6 @@ export const Bott = styled.TouchableOpacity`
     width: 60px;
     justify-content: center;
     align-items: center;
-    border: solid 1px white;
     border-radius: 50px;
     right: 20%;
     background-color: ${colors.primary};

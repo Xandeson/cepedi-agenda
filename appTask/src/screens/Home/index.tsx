@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import { Task } from "../../components/Task";
 import { Button } from "../../components/Button";
 import { SearchBar } from "../../components/SearchBar";
@@ -42,14 +42,35 @@ const TASKS = [
 ];
 
 export function Home() {
-  const [task, setTask] = useState()
+  const [task, setTask] = useState(TASKS)
 
   return (
     <Container>
-      <SearchBar/>
-      <Task title="Task 1" id={1} done={true} favorited={false} />
-
       <StatusBar style="auto" />
+      <SearchBar/>
+      {/* <Task title="Task 1" id={1} done={true} favorited={false} /> */}
+      <FlatList
+        style={{
+          flex: 1,
+          width: "100%",
+        }}
+        data={task}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }: { item: TaskProps }) => (
+          <Task id={item.id} title={item.title} done={item.done} favorited={item.favorited} />
+        )}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          gap: 16,
+          paddingBottom: 32,
+        }}
+        ListEmptyComponent={
+          <>
+            <Text>Lista vazia</Text>
+          </>
+        }
+      />
+      
       <View>
         <Button />
       </View>
