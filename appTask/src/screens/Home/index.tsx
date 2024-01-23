@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, Text, View, FlatList, Button } from "react-native";
 import { Task } from "../../components/Task";
-// import { Button } from "../../components/Button";
+// import { ButtonNewTask } from "../../components/ButtonNewTask";
 import { SearchBar } from "../../components/SearchBar";
 import { Container } from "./style";
 import { NavigationContainer } from '@react-navigation/native';
@@ -76,6 +76,7 @@ export function Home({navigation}: {navigation: any}) {
       <View>
       </View>
       
+      {/* <ButtonNewTask onPress={() => navigation.navigate('AddTask')} /> */}
       <Button title="Adicionar Tarefa" onPress={() => navigation.navigate('AddTask')} />
     </Container>
   );
