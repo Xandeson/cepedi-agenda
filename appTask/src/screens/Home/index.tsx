@@ -51,7 +51,6 @@ export function Home({navigation}: {navigation: any}) {
     <Container>
       <StatusBar style="auto" />
       <SearchBar/>
-      {/* <Task title="Task 1" id={1} done={true} favorited={false} /> */}
       <FlatList
         style={{
           flex: 1,
@@ -66,6 +65,7 @@ export function Home({navigation}: {navigation: any}) {
         contentContainerStyle={{
           gap: 16,
           paddingBottom: 32,
+          
         }}
         ListEmptyComponent={
           <>
