@@ -23,11 +23,6 @@ export function AddTask({navigation}: {navigation: any}){
                         <Label>Descrição:</Label>
                         <Input placeholder="Descrição da tarefa"></Input>
                     </View>
-
-                    <View>
-                        <Label>Prazo:</Label>
-                        <Input placeholder="dd/mm/yyyy"></Input>
-                    </View>
                     
                 </FormContainer>       
                 <Button title="Adicionar Tarefa" onPress={() => navigation.navigate('Home')} />

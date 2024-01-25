@@ -6,7 +6,9 @@ export function DetailTask(){
     return(
         <Container>
             <ContainerDetail>
-                <Text>oii</Text>
+                <Text>recuperar titulo</Text>
+                <Text>recuperar descrição</Text>
+                <Text>excluir tarefa</Text>
             </ContainerDetail>
         </Container>
     )

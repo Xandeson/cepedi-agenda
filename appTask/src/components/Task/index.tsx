@@ -5,9 +5,11 @@ import { Text, StyleSheet} from "react-native";
 import { colors } from "../../styles/variaveis";
 import { TaskProps } from "../../screens/Home";
 
+
 export function Task({ id, title, done, favorited, ...others }:TaskProps){
     const [isFavorited, setIsFavorited] = useState(favorited);
     const [isDone, setIsDone] = useState(done)
+    
 
     const toggleFavorited = () => {
         setIsFavorited(!isFavorited);
@@ -16,7 +18,7 @@ export function Task({ id, title, done, favorited, ...others }:TaskProps){
         setIsDone(!isDone);
     }
     return(
-        <Container {...others}>
+        <Container done={isDone} {...others}>
             <CheckTask onPress={toggleDone}>
                 {isDone ? <AntDesign name="checkcircle" size={28} color="white" /> : null}
             </CheckTask>

@@ -2,11 +2,15 @@ import { View, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import { colors } from "../../styles/variaveis";
 
-export const Container = styled.TouchableOpacity`
+export interface ContainerProps {
+    done: boolean;
+}
+
+export const Container = styled.TouchableOpacity<ContainerProps>`
     flex-direction: row;
     width: 100%;
     height: 60px;
-    background-color: ${colors.primary};
+    background-color: ${props => props.done ? colors.corDestaque : colors.primary};
     padding: 10px 10px;
     justify-content: space-between;
     align-items: center;

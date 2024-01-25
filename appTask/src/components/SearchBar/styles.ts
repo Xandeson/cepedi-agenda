@@ -6,7 +6,7 @@ export const SearchContainer = styled.View`
     flex-direction: row;
     align-items: center;
     background-color: #f0f0f0;
-    
+    margin-bottom: 50px;
     border-radius: 5px;
     
 `
