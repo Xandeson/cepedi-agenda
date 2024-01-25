@@ -29,7 +29,7 @@ export const Title = styled.Text`
     color: #ffffff;
 `
 
-export const Star = styled.View`
+export const Star = styled.TouchableOpacity`
     width: 30px;
     height: 30px;
     justify-content: center;
