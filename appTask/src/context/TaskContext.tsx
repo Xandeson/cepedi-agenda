@@ -1,5 +1,7 @@
 import React, { ReactNode, createContext, useEffect, useState } from "react";
 import { Alert, Task } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 interface TaskProps {
     id: number;
@@ -34,6 +36,25 @@ function TaskProvider({ children }:TaskProviderProps){
     const [tasks, setTasks] = useState([] as TaskProps[])
     const [count, setCount] = useState<number>(0);
 
+    async function storeTask(task: TaskProps[]) {
+        try{
+            await AsyncStorage.setItem("@task", JSON.stringify(tasks));
+        }catch(e){
+            Alert.alert("Erro ao salvar as tarefas!");
+        }
+    }
+
+    async function loadTasks(){
+        try{
+            const tasks = await AsyncStorage.getItem("@tasks");
+            if(tasks){
+                setTasks(JSON.parse(tasks));
+            }
+        }catch(e){
+            Alert.alert("Erro ao carregar as tarefas!");
+        }
+    }
+
     function createTask(title:string){
         const newTask ={
             id:count,
@@ -52,6 +73,14 @@ function TaskProvider({ children }:TaskProviderProps){
         setTask({} as TaskProps);
     }
     
+     useEffect(() =>{
+        loadTasks();
+     }, []);
+
+     useEffect(() => {
+        storeTask(tasks);
+     }, [tasks]);
+
     return(
         <TaskContext.Provider
         value={{task, selectTask, clearTask, createTask, tasks}}>
