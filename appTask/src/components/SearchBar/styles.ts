@@ -16,3 +16,4 @@ export const Input = styled.TextInput`
     height: 100%;
     padding: 5px;
 `
+

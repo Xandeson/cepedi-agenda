@@ -4,10 +4,12 @@ import { StyleSheet, Text, View, FlatList, Button } from "react-native";
 import { Task } from "../../components/Task";
 // import { ButtonNewTask } from "../../components/ButtonNewTask";
 import { SearchBar } from "../../components/SearchBar";
-import { Container } from "./style";
+import { Container, InputContainer,Input,ButtonAdd } from "./style";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
+import { TaskContext } from "../../context/TaskContext";
+import { Feather } from "@expo/vector-icons";
 
 export interface TaskProps {
   id: number;
@@ -46,10 +48,23 @@ const TASKS = [
 ];
 
 export function Home({navigation}: {navigation: any}) {
-  const [task, setTask] = useState(TASKS)
+  const [taskName, setTaskName] = useState("")
+  const [tasks, createTask] = useState(TASKS)
 
   return (
     <Container>
+      {/* <InputContainer>
+        <Input
+          placeholder="Adicionar tarefa"
+          placeholderTextColor="#ffffff"
+          value={taskName}
+          onChangeText={setTaskName}
+        />
+        <ButtonAdd onPress={() => createTask(taskName)}>
+          <Feather name="plus" size={24} color="white" />
+        </ButtonAdd>
+      </InputContainer> */}
+      
       <StatusBar style="auto" />
       <SearchBar/>
       <FlatList
@@ -57,7 +72,7 @@ export function Home({navigation}: {navigation: any}) {
           flex: 1,
           width: "100%",
         }}
-        data={task}
+        data={tasks}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }: { item: TaskProps }) => (
           <Task id={item.id} title={item.title} done={item.done} favorited={item.favorited} />
