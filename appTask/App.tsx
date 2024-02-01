@@ -10,15 +10,17 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <TaskProvider>
+    
       <NavigationContainer>{
-        <Stack.Navigator>
+        <TaskProvider>
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name='Home' component={Home} options={{ title: 'Inicio' }}/>
           <Stack.Screen name='AddTask' component={AddTask} options={{ title: 'Adicionar Tarefa' }}/>
-      </Stack.Navigator>
-      // <AddTask/>
+          <Stack.Screen name='Detail' component={DetailTask} options={{ title: 'Detalhes' }}/>
+       </Stack.Navigator>
+        </TaskProvider>
         }</NavigationContainer>
-    </TaskProvider>
+    
     
   );
 }

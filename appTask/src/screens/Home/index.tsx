@@ -64,7 +64,7 @@ export function Home({navigation}: {navigation: any}) {
       </View>
       
       {/* <ButtonNewTask onPress={() => navigation.navigate('AddTask')} /> */}
-      <Button title="Adicionar Tarefa" onPress={() => navigation.navigate('AddTask')} />
+      {/* <Button title="Adicionar Tarefa" onPress={() => navigation.navigate('DetailTask')} /> */}
     </Container>
   );
 }

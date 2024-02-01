@@ -4,12 +4,32 @@ import {AntDesign } from '@expo/vector-icons';
 import { Text, StyleSheet} from "react-native";
 import { colors } from "../../styles/variaveis";
 import { TaskProps } from "../../screens/Home";
+import { TaskContext } from "../../context/TaskContext";
+import { useContext} from "react";
+import { Feather } from '@expo/vector-icons';
 
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+type RootStackParamList = {
+    Home: undefined;
+    Detail: TaskProps;
+  };
+  
+  type Props = NativeStackScreenProps<RootStackParamList>;
 
 export function Task({ id, title, done, favorited, ...others }:TaskProps){
+    const [task, setTask] = useState<TaskProps>({ id, title, done, favorited });
+    const {selectTask} = useContext(TaskContext);
     const [isFavorited, setIsFavorited] = useState(favorited);
     const [isDone, setIsDone] = useState(done)
     
+    const navigation = useNavigation<Props['navigation']>();
+
+  function handlePress(){
+    selectTask(task);
+    navigation.navigate('Detail', task);
+  }
 
     const toggleFavorited = () => {
         setIsFavorited(!isFavorited);
@@ -18,7 +38,7 @@ export function Task({ id, title, done, favorited, ...others }:TaskProps){
         setIsDone(!isDone);
     }
     return(
-        <Container done={isDone} {...others}>
+        <Container done={isDone} {...others} onPress={() => handlePress()}>
             <CheckTask onPress={toggleDone}>
                 {isDone ? <AntDesign name="checkcircle" size={28} color="white" /> : null}
             </CheckTask>
