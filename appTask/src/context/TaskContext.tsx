@@ -16,6 +16,8 @@ interface TaskContextProps{
     selectTask: (task: TaskProps) => void;
     clearTask: () => void;
     createTask: (title: string) => void;
+    updateTaskStatus: (updatedTask: TaskProps) => void;
+    removeTask: (taskId: number) => void
 }
 
 interface TaskProviderProps{
@@ -29,6 +31,8 @@ export const TaskContext = createContext<TaskContextProps>({
     selectTask: () => {},
     clearTask: () => {},
     createTask: () => {},
+    updateTaskStatus:() => {},
+    removeTask:() => {},
 });
 
 function TaskProvider({ children }:TaskProviderProps){
@@ -65,12 +69,27 @@ function TaskProvider({ children }:TaskProviderProps){
         setCount(count + 1);
         setTasks([...tasks, newTask])
     }
+
+    function updateTaskStatus(updatedTask: TaskProps) {
+        const updatedTasks = tasks.map(task => {
+            if (task.id === updatedTask.id) {
+                return updatedTask;
+            }
+            return task;
+        });
+        setTasks(updatedTasks);
+    }
+
     function selectTask(task: TaskProps) {
         setTask(task);
     }
     
-      function clearTask() {
+    function clearTask() {
         setTask({} as TaskProps);
+    }
+    function removeTask(taskId: number) {
+        const updatedTasks = tasks.filter(task => task.id !== taskId);
+        setTasks(updatedTasks);
     }
     
     useEffect(() =>{
@@ -83,7 +102,7 @@ function TaskProvider({ children }:TaskProviderProps){
 
     return(
         <TaskContext.Provider
-        value={{task, selectTask, clearTask, createTask, tasks}}>
+        value={{task, selectTask, clearTask, createTask, updateTaskStatus, removeTask, tasks}}>
             {children}
         </TaskContext.Provider>
     )

@@ -10,3 +10,9 @@ export const ContainerDetail = styled.View`
     padding: 20px;
     background-color: ${colors.primary};
 `;
+
+export const TitleDetail = styled.Text`
+    color: #232323;
+    font-weight: 700;
+    font-size: 18px;
+`

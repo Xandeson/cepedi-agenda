@@ -23,6 +23,7 @@ export function Home({navigation}: {navigation: any}) {
   const [taskName, setTaskName] = useState("")
   const {tasks, createTask} = useContext(TaskContext)
 
+
   return (
     <Container>
       <InputContainer>
