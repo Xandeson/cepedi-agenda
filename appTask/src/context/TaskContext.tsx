@@ -38,7 +38,7 @@ function TaskProvider({ children }:TaskProviderProps){
 
     async function storeTask(task: TaskProps[]) {
         try{
-            await AsyncStorage.setItem("@task", JSON.stringify(tasks));
+            await AsyncStorage.setItem("@tasks", JSON.stringify(tasks));
         }catch(e){
             Alert.alert("Erro ao salvar as tarefas!");
         }
@@ -73,13 +73,13 @@ function TaskProvider({ children }:TaskProviderProps){
         setTask({} as TaskProps);
     }
     
-     useEffect(() =>{
+    useEffect(() =>{
         loadTasks();
-     }, []);
+    }, []);
 
-     useEffect(() => {
+    useEffect(() => {
         storeTask(tasks);
-     }, [tasks]);
+    }, [tasks]);
 
     return(
         <TaskContext.Provider
