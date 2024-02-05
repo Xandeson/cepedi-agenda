@@ -1,15 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { useState, useContext } from "react";
-import { StyleSheet, Text, View, FlatList, Button } from "react-native";
+import { useContext, useState } from "react";
+import { FlatList, Text, View } from "react-native";
 import { Task } from "../../components/Task";
 // import { ButtonNewTask } from "../../components/ButtonNewTask";
-import { SearchBar } from "../../components/SearchBar";
-import { Container, InputContainer,Input,ButtonAdd } from "./style";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as React from 'react';
-import { TaskContext} from "../../context/TaskContext";
-import {AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
+import * as React from "react";
+import { TaskContext } from "../../context/TaskContext";
+import { ButtonAdd, Container, Input, InputContainer } from "./style";
 
 export interface TaskProps {
   id: number;
@@ -18,11 +15,9 @@ export interface TaskProps {
   done: boolean;
 }
 
-
-export function Home({navigation}: {navigation: any}) {
-  const [taskName, setTaskName] = useState("")
-  const {tasks, createTask} = useContext(TaskContext)
-
+export function Home() {
+  const [taskName, setTaskName] = useState("");
+  const { tasks, createTask } = useContext(TaskContext);
 
   return (
     <Container>
@@ -34,10 +29,10 @@ export function Home({navigation}: {navigation: any}) {
           onChangeText={setTaskName}
         />
         <ButtonAdd onPress={() => createTask(taskName)}>
-          <AntDesign name="plus" size={5} color= 'white' />
+          <AntDesign name="plus" size={24} color="white" />
         </ButtonAdd>
       </InputContainer>
-      
+
       <StatusBar style="auto" />
       <FlatList
         style={{
@@ -45,15 +40,19 @@ export function Home({navigation}: {navigation: any}) {
           width: "100%",
         }}
         data={tasks}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }: { item: TaskProps }) => (
-          <Task id={item.id} title={item.title} done={item.done} favorited={item.favorited} />
+          <Task
+            id={item.id}
+            title={item.title}
+            done={item.done}
+            favorited={item.favorited}
+          />
         )}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           gap: 16,
           paddingBottom: 32,
-          
         }}
         ListEmptyComponent={
           <>
@@ -61,9 +60,8 @@ export function Home({navigation}: {navigation: any}) {
           </>
         }
       />
-      <View>
-      </View>
-      
+      <View></View>
+
       {/* <ButtonNewTask onPress={() => navigation.navigate('AddTask')} /> */}
       {/* <Button title="Adicionar Tarefa" onPress={() => navigation.navigate('DetailTask')} /> */}
     </Container>
